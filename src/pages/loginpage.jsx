@@ -15,7 +15,7 @@ export default function LoginPage () {
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" />
                     </div>
-                    <button class="sign-in-button">Log In</button>
+                    <button className="sign-in-button">Log In</button>
                 </form>
             </section>
         </main>
