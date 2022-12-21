@@ -2,11 +2,12 @@ import React from 'react'
 import logoArgentBank from "../assets/img/argentBankLogo.png"
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { tokenRemove, tokenAdd } from '../utils/store/userTokenSlice';
 
 export default function Header () {
-    const dispatch = useDispatch()
-    const userToken = useSelector((state) => state.userToken);
+    const userToken = useSelector(state => state.userToken.value);
     const userLogged = userToken !== null
+    const dispatch = useDispatch()
 
     return (
         <nav className="main-nav">
@@ -18,8 +19,8 @@ export default function Header () {
                 />
                 <h1 className="sr-only">Argent Bank</h1>
             </NavLink>
-            <button onClick={() => dispatch({ type: 'tokenAdd' })}>Connect</button>
-            <button onClick={() => dispatch({ type: 'tokenRemove' })}>Disconnect</button>
+            <button onClick={() => dispatch(tokenAdd())}>Connect</button>
+            <button onClick={() => dispatch(tokenRemove())}>Disconnect</button>
             {userLogged ?
                 <div>
                     <NavLink className="main-nav-item" to="profile">
