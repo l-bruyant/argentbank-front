@@ -30,10 +30,10 @@ export default function Header () {
                     </NavLink>
                 </div>
                 <div>
-                    <div className="main-nav-item" onClick={() => dispatch(tokenRemove())} >
+                    <NavLink to="/" className="main-nav-item" onClick={() => dispatch(tokenRemove())} >
                         <i className="fa fa-sign-out" />                    
                         Sign out
-                    </div>
+                    </NavLink>
                 </div>
             </div>
             :    

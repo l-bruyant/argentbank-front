@@ -1,6 +1,7 @@
 import { React, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import ProfileUserName from '../components/profileUserName';
 
 export default function ProfilePage () {
     const userName = 'Tony Jarvis'
@@ -18,10 +19,7 @@ export default function ProfilePage () {
 
     return (
         <main className="main bg-dark">
-            <div className="header">
-                <h1> Welcome back <br /> {userName} </h1>
-                <button className="edit-button">Edit Name</button>
-            </div>
+            <ProfileUserName />
             <h2 className="sr-only">Accounts</h2>
             <section className="account">
                 <div className="account-content-wrapper">
