@@ -11,13 +11,13 @@ export const userTokenSlice = createSlice({
         },
         tokenAdd: state => {
             state.value = 12
+        },
+        tokenFetchAdd: (state, action) => {
+            state.value = action.payload
         }
-        // tokenAdd: (state, action) => {
-        //     state.value = action.payload
-        // }
     }
 })
 
-export const { tokenRemove, tokenAdd } = userTokenSlice.actions
+export const { tokenRemove, tokenAdd, tokenFetchAdd } = userTokenSlice.actions
 
 export default userTokenSlice.reducer
