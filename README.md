@@ -41,6 +41,7 @@ Make sure to be in the project folder
 - First, you need to install the back-end and start the back-end app (check instructions on the back-end directory)  
 - Then, run the back end as explained in the back end read me  
 - Then, launch the front end app (see 5.4)  
+- To login, you can use these credentials : email => tony@stark.com // password => password123
 
 ## 6. Author
 Luc Bruyant
