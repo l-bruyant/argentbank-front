@@ -24,11 +24,11 @@ export default function LoginPage () {
 
     const handleSubmit = async e => {
         e.preventDefault()
+        setAttemptedConnect(true)
         const res = await loginUser({
             email: userEmail,
             password: userPassword
         })
-        setAttemptedConnect(true)
         dispatch(tokenFetchAdd(res.body.token))
     }
 
@@ -46,11 +46,11 @@ export default function LoginPage () {
                 <form onSubmit={handleSubmit}>
                     <div className="input-wrapper">
                         <label htmlFor="email">User Email</label>
-                        <input type="text" id="email" onChange={e => setUserEmail(e.target.value)} />
+                        <input required type="text" id="email" onChange={e => setUserEmail(e.target.value)} />
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" onChange={e => setUserPassword(e.target.value)}/>
+                        <input required type="password" id="password" onChange={e => setUserPassword(e.target.value)}/>
                     </div>
                     <button className="sign-in-button">Log In</button>
                     {attemptedConnect? <div className='connect-warning'>Could not connect</div>: null}

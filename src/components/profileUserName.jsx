@@ -39,7 +39,7 @@ export default function ProfileUserName () {
             setUserLastName(res.body.lastName)
         }
         call()
-    }, ) 
+    }, [userToken] ) 
 
     return (
         <div className='profile-user-name-area'>
@@ -55,11 +55,11 @@ export default function ProfileUserName () {
                         <div className='form-inputs'>
                             <div>
                                 <label htmlFor="first"></label>
-                                <input placeholder={userFirstName} type="text" id="first" onChange={e => setUserFirstNameInput(e.target.value)} />
+                                <input required placeholder={userFirstName} type="text" id="first" onChange={e => setUserFirstNameInput(e.target.value)} />
                             </div>
                             <div>
                                 <label htmlFor="last"></label>
-                                <input placeholder={userLastName} type="text" id="last" onChange={e => setUserLastNameInput(e.target.value)}/>
+                                <input required placeholder={userLastName} type="text" id="last" onChange={e => setUserLastNameInput(e.target.value)}/>
                             </div>
                         </div>
                         <div className='form-controls'>
