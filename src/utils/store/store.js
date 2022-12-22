@@ -13,7 +13,7 @@ import {
 import { combineReducers } from '@reduxjs/toolkit'
 
 const persistConfig = {
-    key: "root",
+    key: 'root',
     version: 1,
     storage
 }
@@ -28,9 +28,9 @@ export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
-        serializableCheck: {
-            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
-    }),
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }),
 })
 

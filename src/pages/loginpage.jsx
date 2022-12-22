@@ -1,27 +1,16 @@
 import { React, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import { tokenFetchAdd } from '../utils/store/userTokenSlice';
-
-async function loginUser(credentials) {
-    return fetch('http://localhost:3001/api/v1/user/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(credentials)
-        })
-        .then(data => data.json())
-}
+import { useDispatch, useSelector } from 'react-redux'
+import { tokenFetchAdd } from '../utils/store/userTokenSlice'
+import { loginUser } from '../utils/api/api'
 
 export default function LoginPage () {
     const [userEmail, setUserEmail] = useState()
     const [userPassword, setUserPassword] = useState()
+    const [attemptedConnect, setAttemptedConnect] = useState(false)
+    const userToken = useSelector(state => state.userToken.value)
+    const userHasToken = userToken !== null
     const dispatch = useDispatch()
-
-    const userToken = useSelector(state => state.userToken.value);
-    const userLogged = userToken !== null
-
     const navigate = useNavigate()
 
     const handleSubmit = async e => {
@@ -30,11 +19,12 @@ export default function LoginPage () {
             email: userEmail,
             password: userPassword
         })
+        setAttemptedConnect(true)
         dispatch(tokenFetchAdd(token.body.token))
     }
 
     useEffect(() => {
-        if (userLogged) {
+        if (userHasToken) {
             navigate('/profile')
         } 
     }) 
@@ -54,6 +44,7 @@ export default function LoginPage () {
                         <input type="password" id="password" onChange={e => setUserPassword(e.target.value)}/>
                     </div>
                     <button className="sign-in-button">Log In</button>
+                    {attemptedConnect? <div className='connect-warning'>Could not connect</div>: null}
                 </form>
             </section>
         </main>

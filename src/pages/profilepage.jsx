@@ -1,18 +1,15 @@
 import { React, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux';
-import ProfileUserName from '../components/profileUserName';
+import { useSelector } from 'react-redux'
+import ProfileUserName from '../components/profileUserName'
 
 export default function ProfilePage () {
-    const userName = 'Tony Jarvis'
-
-    const userToken = useSelector(state => state.userToken.value);
-    const userLogged = userToken !== null
-
+    const userToken = useSelector(state => state.userToken.value)
+    const userHasToken = userToken !== null
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (!userLogged) {
+        if (!userHasToken) {
             navigate('/login')
         } 
     }) 
