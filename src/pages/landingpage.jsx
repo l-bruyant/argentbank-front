@@ -7,7 +7,7 @@ import securityIcon from '../assets/img/icon-security.png'
 *
 * Renders the static landing page for argentbank
 *
-* @function LoginPage
+* @function LandingPage
 *
 */
 

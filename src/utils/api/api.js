@@ -11,14 +11,17 @@
 */
 
 export async function loginUser(credentials) {
-    return fetch('http://localhost:3001/api/v1/user/login', {
+    const res = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(credentials)
     })
-        .then(data => data.json())
+    if (!res.ok) {
+        throw('Identification error')
+    }
+    return res.json()
 }
 
 /**
@@ -33,16 +36,22 @@ export async function loginUser(credentials) {
 *
 */
 
-
 export async function requestUserName(token) {
-    return fetch('http://localhost:3001/api/v1/user/profile', {
+    const res = await fetch('http://localhost:3001/api/v1/user/profile', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer' + token
         },
     })
-        .then(data => data.json())
+    if (res.status === 401) {
+        sessionStorage.clear()
+        location.reload()
+    }
+    if (!res.ok) {
+        throw('API Error, check internet connection')
+    }
+    return res.json()
 }
 
 /**
@@ -60,15 +69,21 @@ export async function requestUserName(token) {
 */
 
 export async function editUserName(userNameData, token) {
-    return fetch('http://localhost:3001/api/v1/user/profile', 
-        {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer' + token
-            },
-            body: JSON.stringify(userNameData)
-        })
-        .then(data => data.json())
+    const res = await fetch('http://localhost:3001/api/v1/user/profile', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer' + token
+        },
+        body: JSON.stringify(userNameData)
+    })
+    if (res.status === 401) {
+        sessionStorage.clear()
+        location.reload()
+    }
+    if (!res.ok) {
+        throw('API Error, check internet connection')
+    }
+    return res.json()
 }
 

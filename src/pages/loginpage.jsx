@@ -24,12 +24,12 @@ export default function LoginPage () {
 
     const handleSubmit = async e => {
         e.preventDefault()
-        const token = await loginUser({
+        const res = await loginUser({
             email: userEmail,
             password: userPassword
         })
         setAttemptedConnect(true)
-        dispatch(tokenFetchAdd(token.body.token))
+        dispatch(tokenFetchAdd(res.body.token))
     }
 
     useEffect(() => {

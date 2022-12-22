@@ -3,6 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import ProfileUserName from '../components/profileUserName'
 
+/**
+*
+* Renders the user profile page
+* If the user doesn't have a token in local storage, redirection to the login route
+*
+* @function ProfilePage
+*
+*/
+
 export default function ProfilePage () {
     const userToken = useSelector(state => state.userToken.value)
     const userHasToken = userToken !== null

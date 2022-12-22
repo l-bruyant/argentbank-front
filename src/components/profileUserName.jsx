@@ -20,11 +20,11 @@ export default function ProfileUserName () {
     const userToken = useSelector(state => state.userToken.value)
 
     const handleSubmit = async () => {
-        const nameData = {
+        const body = {
             firstName: userFirstNameInput,
             lastName: userLastNameInput
         }
-        await editUserName(nameData, userToken)
+        await editUserName(body, userToken)
     }
 
     const cancelEdit = e => {
@@ -34,9 +34,9 @@ export default function ProfileUserName () {
 
     useEffect (() => {
         const call = async () => {
-            const userNameData = await requestUserName(userToken)
-            setUserFirstName(userNameData.body.firstName)
-            setUserLastName(userNameData.body.lastName)
+            const res = await requestUserName(userToken)
+            setUserFirstName(res.body.firstName)
+            setUserLastName(res.body.lastName)
         }
         call()
     }, ) 
