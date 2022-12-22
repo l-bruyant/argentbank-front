@@ -2,6 +2,14 @@ import { React, useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { requestUserName, editUserName } from '../utils/api/api'
 
+/**
+*
+* Displays the user's name by fetching it from the server
+* Users can also edit their user name and save the data on the server
+*
+* @function ProfileUserName
+*
+*/
 
 export default function ProfileUserName () {
     const [userFirstName, setUserFirstName] = useState()

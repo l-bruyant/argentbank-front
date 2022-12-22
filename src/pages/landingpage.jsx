@@ -3,6 +3,14 @@ import chatIcon from '../assets/img/icon-chat.png'
 import moneyIcon from '../assets/img/icon-money.png'
 import securityIcon from '../assets/img/icon-security.png'
 
+/**
+*
+* Renders the static landing page for argentbank
+*
+* @function LoginPage
+*
+*/
+
 export default function LandingPage () {
     return (
         <main>

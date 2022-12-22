@@ -4,6 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { tokenFetchAdd } from '../utils/store/userTokenSlice'
 import { loginUser } from '../utils/api/api'
 
+/**
+*
+* Renders the login page
+* If the user has a token in local storage, redirection to the profile route
+*
+* @function LoginPage
+*
+*/
+
 export default function LoginPage () {
     const [userEmail, setUserEmail] = useState()
     const [userPassword, setUserPassword] = useState()

@@ -4,6 +4,16 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { tokenRemove } from '../utils/store/userTokenSlice'
 
+/**
+*
+* Displays the page Header
+* If the user has no identification token : displays the login button
+* If the user has an identification token : displays my account and sign out buttons
+*
+* @function Header
+*
+*/
+
 export default function Header () {
     const userToken = useSelector(state => state.userToken.value)
     const userHasToken = userToken !== null

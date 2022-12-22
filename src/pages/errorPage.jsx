@@ -3,6 +3,14 @@ import { useRouteError } from 'react-router-dom'
 import Footer from '../components/footer'
 import Header from '../components/header'
 
+/**
+*
+* Displayed by the router in case of wrong route
+*
+* @function ErrorPage
+*
+*/
+
 export default function ErrorPage() {
     const error = useRouteError()
     
