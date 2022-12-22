@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userTokenReducer from './userTokenSlice'
-import storage from 'redux-persist/lib/storage'
+import sessionStorage from 'redux-persist/es/storage/session'
 import {
     persistReducer,
     FLUSH,
@@ -15,7 +15,7 @@ import { combineReducers } from '@reduxjs/toolkit'
 const persistConfig = {
     key: 'root',
     version: 1,
-    storage
+    storage: sessionStorage
 }
 
 const reducer = combineReducers({
