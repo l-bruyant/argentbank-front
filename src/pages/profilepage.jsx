@@ -1,7 +1,21 @@
-import React from 'react'
+import { React, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 export default function ProfilePage () {
     const userName = 'Tony Jarvis'
+
+    const userToken = useSelector(state => state.userToken.value);
+    const userLogged = userToken !== null
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!userLogged) {
+            navigate('/login')
+        } 
+    }) 
+
     return (
         <main className="main bg-dark">
             <div className="header">

@@ -1,7 +1,6 @@
-import { React, useState } from 'react'
-// import { NavLink } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
+import { React, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
 import { tokenFetchAdd } from '../utils/store/userTokenSlice';
 
 async function loginUser(credentials) {
@@ -20,15 +19,25 @@ export default function LoginPage () {
     const [userPassword, setUserPassword] = useState()
     const dispatch = useDispatch()
 
+    const userToken = useSelector(state => state.userToken.value);
+    const userLogged = userToken !== null
+
+    const navigate = useNavigate()
+
     const handleSubmit = async e => {
         e.preventDefault()
         const token = await loginUser({
             email: userEmail,
             password: userPassword
         })
-        console.log(token.body.token)
         dispatch(tokenFetchAdd(token.body.token))
     }
+
+    useEffect(() => {
+        if (userLogged) {
+            navigate('/profile')
+        } 
+    }) 
 
     return (
         <main className="main bg-dark">
